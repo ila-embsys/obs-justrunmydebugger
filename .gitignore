@@ -1,0 +1,21 @@
+# osc tool
+.osc
+.lock
+
+# temporary services data
+## common archives
+tmp*.obs_scm.service
+## project specific archives
+justrunmydebugger
+
+# could be restored by run osc service manualrun
+## common archives
+*.obscpio
+*.obsinfo
+## project specific archives
+# cargo deps
+vendor.tar.xz
+cargo_config
+# nodejs deps
+node_modules*
+package-lock.json

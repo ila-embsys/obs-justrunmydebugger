@@ -1,0 +1,13 @@
+Source: justrunmydebugger
+Priority: extra
+Maintainer: Ilya Stolyarov <ila.embsys@gmail.com>
+Build-Depends: debhelper (>= 10)
+Standards-Version: 3.9.5
+Section: devel
+
+Package: justrunmydebugger
+Recommends: openocd
+Section: devel
+Architecture: amd64
+Description: This tool is a GUI for easy start and use OpenOCD.
+

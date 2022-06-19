@@ -1,0 +1,41 @@
+<services>
+    <service name="obs_scm" mode="localonly">
+        <param name="url">https://github.com/ila-embsys/justrunmydebugger</param>
+        <param name="scm">git</param>
+        <param name="revision">master</param>
+        <param name="versionformat">@PARENT_TAG@-@TAG_OFFSET@</param>
+        <param name="versionrewrite-pattern">v(.*)</param>
+        <param name="versionrewrite-replacement">\1</param>
+        <param name="filename">justrunmydebugger</param>
+        <param name="without-version">true</param>
+        <param name="exclude">.git**</param>
+        <param name="exclude">.vscode**</param>
+        <param name="exclude">.github**</param>
+        <param name="exclude">.tauri**</param>
+        <param name="exclude">node_modules**</param>
+        <param name="exclude">.gitignore</param>
+    </service>
+    <service name="extract_file" mode="localonly">
+      <param name="archive">justrunmydebugger*.obscpio</param>
+      <param name="files">*/package-lock.json</param>
+      <param name="outfilename">package-lock.json</param>
+    </service>
+    <service name="node_modules" mode="localonly">
+        <param name="cpio">node_modules.obscpio</param>
+        <param name="output">node_modules.spec.inc</param>
+        <param name="source-offset">10000</param>
+    </service>
+    <service name="cargo_vendor" mode="localonly">
+        <param name="srcdir">justrunmydebugger/src-tauri</param>
+        <param name="update">true</param>
+    </service>
+    <service name="tar" mode="buildtime">
+        <param name="obsinfo">justrunmydebugger.obsinfo</param>
+        <param name="version">_none_</param>
+    </service>
+    <service name="set_version" mode="buildtime" />
+    <service name="recompress" mode="buildtime">
+        <param name="file">justrunmydebugger-*.tar</param>
+        <param name="compression">gz</param>
+    </service>
+</services>
